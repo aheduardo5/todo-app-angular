@@ -1,0 +1,21 @@
+input{
+    text-align: center;
+}
+.text-danger{
+    background-color: rgba(255, 255, 255, 0.856);
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+}
+.no-tasks{
+    text-align: center;
+}
+
+.cursor, .cursor-trash{
+    cursor: pointer;
+}
+
+.cursor-trash:hover{
+    color: red;
+    transition: 300ms;
+}

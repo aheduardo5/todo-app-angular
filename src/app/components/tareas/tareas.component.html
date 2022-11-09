@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <input
+        type="text"
+        [(ngModel)]="nombreTarea"
+        (keyup.enter)="agregarTarea()"
+        class="form-control form-control-lg"
+        placeholder="Ingrese Tarea"
+      />
+      <div class="text-danger" *ngIf="emptyTask">
+        <strong>Debe de ingresar una tarea</strong>
+      </div>
+    </div>
+    <div class="col-lg-6 offset-lg-3 mt-3">
+      <div class="card p-2 no-tasks" *ngIf="listaTareas.length === 0">
+        <h6>No hay tareas para mostrar</h6>
+      </div>
+      <ul class="list-group">
+        <li
+          *ngFor="let tarea of listaTareas; let i = index"
+          class="list-group-item d-flex justify-content-between"
+        >
+          <span class="cursor" (click)="actualizarTarea(tarea,i)">
+            <i [class.text-success]="tarea.estado" [ngClass]="tarea.estado ? 'fa-sharp fa-solid fa-circle-check' : 'fa-regular fa-regular fa-circle'"></i>
+        </span>
+          {{ tarea.nombre }}
+          <span class="cursor-trash" (click)="eliminarTarea(i)"><i class="fa-solid fa-trash"></i></span>
+        </li>
+      </ul>
+      <div class="card p-2 no-tasks mt-2" *ngIf="tareasTerminadas.length > 0">
+          <h6>Tareas Terminadas</h6>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let tareaTerminada of tareasTerminadas">
+                {{tareaTerminada.nombre}}
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>
